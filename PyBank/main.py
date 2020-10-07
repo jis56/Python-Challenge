@@ -1,7 +1,7 @@
 import os
 import csv
 
-pybank_csv = os.path.join('.','Resources', 'budget_data.csv')
+pybank_csv = os.path.join('Pybank','Resources', 'budget_data.csv')
 
 greatest_increase = 0.0
 greatest_increase_date = ""
@@ -16,6 +16,7 @@ total_profit = 0.0
 with open(pybank_csv) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     next(csvreader, None)
+
     for row in csvreader:
         current_row_value = float(row[1])
         total_month += 1
@@ -49,8 +50,8 @@ with open(pybank_csv) as csvfile:
     print(f"Total Months: {str(total_month)}")
     print(f"Total: ${str(total_profit)}")
     print(f"Average Change: ${str(average_change)}")
-    print(f"Greatest Increase in Profits: {str(greatest_increase_date)} {str(greatest_increase)}")
-    print(f"Greatest Decrease in Profits: {str(greatest_decrease_date)} {str(greatest_decrease)}")
+    print(f"Greatest Increase in Profits: {str(greatest_increase_date)} ${str(greatest_increase)}")
+    print(f"Greatest Decrease in Profits: {str(greatest_decrease_date)} ${str(greatest_decrease)}")
 
 output_file = os.path.join('.','Analysis','analysis.txt')
 
@@ -62,7 +63,7 @@ with open(output_file, "w") as datafile:
     datafile.write(f"Average Change: ${str(average_change)}\n")
     datafile.write(f"Greatest Increase in Profits: {str(greatest_increase_date)} ${str(greatest_increase)}\n")
     datafile.write(f"Greatest Decrease in Profits: {str(greatest_decrease_date)} ${str(greatest_decrease)}\n")
-    datafile.close()
+    
     
 
 
