@@ -7,6 +7,7 @@ vote_count = 0
 candidate_votes = {}
 winner = ""
 winning_vote = 0
+votes = 0
 
 with open(election_data_csv) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=",")
@@ -31,11 +32,11 @@ print("---------------------------------------")
 for candidate in candidate_votes:
     votes = candidate_votes.get(candidate)
     vote_percentage = float(votes)/float(vote_count) * 100
-    formatted_percentage = '{0:.3f}'.format(vote_percentage)
+    formatted_percentage = '{0:.3f}'.format(vote_percentage) 
 
     if votes > winning_vote:
-        winning_votes = votes
-        winner = candidate         
+        winning_vote = votes
+        winner = candidate      
 
     outcome = (f"{str(candidate)}: {float(formatted_percentage)}% ({int(votes)})")
     print(outcome)
