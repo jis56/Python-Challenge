@@ -3,9 +3,10 @@ import csv
 
 election_data_csv = os.path.join('PyPoll','Resources', 'election_data.csv')
 
-row_count = 0
-candidates = {}
-candidate_options = []
+vote_count = 0
+candidate_votes = {}
+winner = ""
+winning_vote = 0
 
 with open(election_data_csv) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=",")
@@ -13,18 +14,59 @@ with open(election_data_csv) as csvfile:
 
         for row in csvreader:
 
-            row_count += 1
+            vote_count += 1
 
             candidate = str(row[2])
 
-            if candidate not in candidate_options:
-                candidate_options.append(candidate)
-
-            if candidate not in candidates:
-                candidates[candidate] = 1
+            if candidate not in candidate_votes:
+                candidate_votes[candidate] = 1
             else:
-                candidates[candidate] += 1
+                candidate_votes[candidate] += 1
 
-print(candidate_options)
+print("Election Results")
+print("---------------------------------------")
+print(f"Total Votes: {int(vote_count)}")
+print("---------------------------------------")
+
+for candidate in candidate_votes:
+    votes = candidate_votes.get(candidate)
+    vote_percentage = float(votes)/float(vote_count) * 100
+    formatted_percentage = '{0:.3f}'.format(vote_percentage)
+
+    if votes > winning_vote:
+        winning_votes = votes
+        winner = candidate         
+
+    outcome = (f"{str(candidate)}: {float(formatted_percentage)}% ({int(votes)})")
+    print(outcome)
+
+print("---------------------------------------")
+print(f"Winner: {str(winner)}")
+print("---------------------------------------")
+
+output_file = os.path.join('PyPoll','Analysis','analysis.txt')
+
+with open(output_file, "w") as datafile:
+    datafile.write("Election Results\n")
+    datafile.write("---------------------------------------\n")
+    datafile.write(f"Total Votes: {int(vote_count)}\n")
+    datafile.write("---------------------------------------\n")
+
+    for candidate in candidate_votes:
+        votes = candidate_votes.get(candidate)
+        vote_percentage = float(votes)/float(vote_count) * 100
+        formatted_percentage = '{0:.3f}'.format(vote_percentage)
+
+        if votes > winning_vote:
+            winning_votes = votes
+            winner = candidate         
+
+        outcome = (f"{str(candidate)}: {float(formatted_percentage)}% ({int(votes)})")
+        datafile.write(outcome + "\n")
+
+    datafile.write("---------------------------------------\n")
+    datafile.write(f"Winner: {str(winner)}\n")
+    datafile.write("---------------------------------------\n")
+
 
 
