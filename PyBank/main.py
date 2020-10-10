@@ -1,7 +1,7 @@
 import os
 import csv
 
-pybank_csv = os.path.join('Pybank','Resources', 'budget_data.csv')
+pybank_csv = os.path.join('.','Resources', 'budget_data.csv')
 
 greatest_increase = 0.0
 greatest_increase_date = ""
