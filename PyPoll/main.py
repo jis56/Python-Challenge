@@ -56,7 +56,6 @@ with open(output_file, "w") as datafile:
     for candidate in candidate_votes:
         votes = candidate_votes.get(candidate)
         vote_percentage = float(votes)/float(vote_count) * 100
-        #formatted_percentage = '{0:.3f}'.format(vote_percentage)
 
         if votes > winning_vote:
             winning_votes = votes
@@ -64,8 +63,6 @@ with open(output_file, "w") as datafile:
 
         outcome = (f"{str(candidate)}: {'{:.3f}'.format(vote_percentage)} ({int(votes)})")
         datafile.write(outcome + "\n")
-
-    #print(formatted_percentage)
 
     datafile.write("---------------------------------------\n")
     datafile.write(f"Winner: {str(winner)}\n")
