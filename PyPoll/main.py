@@ -1,7 +1,7 @@
 import os
 import csv
 
-election_data_csv = os.path.join('PyPoll','Resources', 'election_data.csv')
+election_data_csv = os.path.join('.','Resources', 'election_data.csv')
 
 vote_count = 0
 candidate_votes = {}
