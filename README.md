@@ -5,9 +5,13 @@ PyBank
 A Python script was created to analyze the financial records of a company. The financial data set is called budget_data.csv in the Resources folder and comprises of two columns: Data and Profit/Losses. This script analyzes the records to calculate the following:
   
   1) The total number of months included in the dataset
+  
   2)The net total amount of "Profit/Losses" over the entire period
+  
   3)The average of the changes in "Profit/Losses" over the entire period
+  
   4)The greatest increase in profits (date and amount) over the entire period
+  
   5)The greatest decrease in losses (date and amount) over the entire period
   
 In addition, the final script will also print the analysis to the terminal as well as export a text file to the "Analysis" folder.
