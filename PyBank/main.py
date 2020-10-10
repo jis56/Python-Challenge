@@ -34,9 +34,7 @@ with open(pybank_csv) as csvfile:
             if current_row_value < greatest_decrease:
                 greatest_decrease = current_row_value
                 greatest_decrease_date = str(row[0])
-            all_changes = all_changes + current_row_value - previous_month_profit_loss
-
-        previous_month_profit_loss = current_row_value
+            all_changes = all_changes + current_row_value 
 
     average_change = all_changes / total_month
 
@@ -53,7 +51,7 @@ with open(pybank_csv) as csvfile:
     print(f"Greatest Increase in Profits: {str(greatest_increase_date)} ${str(greatest_increase)}")
     print(f"Greatest Decrease in Profits: {str(greatest_decrease_date)} ${str(greatest_decrease)}")
 
-output_file = os.path.join('.','Analysis','analysis.txt')
+output_file = os.path.join('PyBank','Analysis','analysis.txt')
 
 with open(output_file, "w") as datafile:
     datafile.write("Financial Analysis\n") 
